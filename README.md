@@ -12,7 +12,7 @@ npm install
 # Start Development
 
 ```
-npm run start
+npm run dev
 ```
 
 # Build Production
