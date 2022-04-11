@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Dispatch } from '../index';
 
 type CounterState = {
   value: number;

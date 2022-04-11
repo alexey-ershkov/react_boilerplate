@@ -1,6 +1,6 @@
 import '../index.scss';
 
-import { DocumentCard, PlainCard } from '@fluentui/react';
+import { DocumentCard } from '@fluentui/react';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
