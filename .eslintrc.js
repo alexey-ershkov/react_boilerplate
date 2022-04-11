@@ -22,6 +22,7 @@ module.exports = {
     'import/no-duplicates': 'error',
     'import/prefer-default-export': 'off',
     'default-param-last': 'off',
+    'no-param-reassign': 'off',
     'react/function-component-definition': [
       'error',
       {

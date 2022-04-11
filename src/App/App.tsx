@@ -1,12 +1,12 @@
 import '../index.scss';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import { getCounter } from '../store/counter/selectors';
 import { Dispatch } from '../store';
-import { decrease, increase } from '../store/counter';
+import { asyncIncrease, decrease, increase } from '../store/counter';
 
 const StyledDiv = styled.div`
   color: white;
@@ -42,6 +42,10 @@ const Button = styled.div`
 const App = () => {
   const counter = useSelector(getCounter);
   const dispatch = useDispatch<Dispatch>();
+
+  useEffect(() => {
+    dispatch(asyncIncrease());
+  }, []);
 
   return (
     <div>
