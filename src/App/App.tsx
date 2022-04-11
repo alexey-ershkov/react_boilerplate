@@ -1,16 +1,22 @@
 import '../index.scss';
 
+import { DocumentCard, PlainCard } from '@fluentui/react';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
-import { getCounter } from '../store/counter/selectors';
 import { Dispatch } from '../store';
 import { asyncIncrease, decrease, increase } from '../store/counter';
+import { getCounter } from '../store/counter/selectors';
 
-const StyledDiv = styled.div`
-  color: white;
-  text-align: center;
+const StyledDocumentCard = styled(DocumentCard)`
+  height: 50vh;
+  min-width: 50vw !important;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 const Counter = styled.div`
@@ -48,14 +54,13 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      <StyledDiv className="tailwind_class"> React Boilerplate </StyledDiv>
+    <StyledDocumentCard>
       <Counter>
         <Button onClick={() => dispatch(decrease(10))}>-</Button>
         Counter: {counter}
         <Button onClick={() => dispatch(increase(10))}>+</Button>
       </Counter>
-    </div>
+    </StyledDocumentCard>
   );
 };
 
