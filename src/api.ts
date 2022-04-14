@@ -1,22 +1,15 @@
-// import { createApi } from '@reduxjs/toolkit/query';
-
-/* React-specific entry point that automatically generates
-   hooks corresponding to the defined endpoints */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Stock, UserInfo } from 'besthack_exchange_api_typings_and_utils';
 import { AuthUserInfo, CreateUserInfo } from 'besthack_exchange_api_typings_and_utils/models/User';
-import * as url from 'url';
 
-// Define a service using a base URL and expected endpoints
 export const api = createApi({
     reducerPath: 'api',
-    baseQuery: fetchBaseQuery({ baseUrl: process.env.API_URL }),
+    tagTypes: ['UserStocks', 'User'],
+    baseQuery: fetchBaseQuery({ baseUrl: process.env.API_URL, credentials: 'include' }),
     endpoints: (builder) => ({
+        // user
         getUserInfo: builder.query<UserInfo, void>({
-            query: () => '/',
-        }),
-        getAllStocks: builder.query<Stock[], void>({
-            query: () => '/stock',
+            query: () => '/user',
         }),
         register: builder.mutation<UserInfo, CreateUserInfo>({
             query: (args) => ({
@@ -32,10 +25,12 @@ export const api = createApi({
                 body: info,
             }),
         }),
+        // stocks
+        getAllStocks: builder.query<Stock[], void>({
+            query: () => '/stock',
+        }),
     }),
 });
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
 export const { useGetUserInfoQuery, useGetAllStocksQuery, useRegisterMutation, useLoginMutation } =
     api;

@@ -23,6 +23,7 @@ module.exports = {
         'import/prefer-default-export': 'off',
         'default-param-last': 'off',
         'no-param-reassign': 'off',
+        'react/require-default-props': 'off',
         'react/function-component-definition': [
             'error',
             {

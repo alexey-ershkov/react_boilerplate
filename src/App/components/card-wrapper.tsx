@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { DEPTH } from '../styles';
+import { DEPTH, GAP } from '../styles';
 
 interface CardWrapperProps {
     children: React.ReactNode;
@@ -10,8 +10,10 @@ interface CardWrapperProps {
 
 export const CardWrapper = ({ children, styles = {} }: CardWrapperProps) => {
     const Wrapper = styled.div`
-        box-shadow: ${DEPTH.l};
+        padding: ${GAP.xl};
+        box-shadow: ${DEPTH.s};
         background-color: white;
+
         ${styles}
     `;
 

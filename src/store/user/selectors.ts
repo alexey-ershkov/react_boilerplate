@@ -1,14 +1,5 @@
 import { RootState } from '../index';
 
-// export const checkUserState = (state: RootState) => Boolean(state.user.id);
-// export const getUserState = (state: RootState) => state.user;
-// export const getUserId = (state: RootState) => state.user.id;
-
-// export const getUserStateMock = (state: RootState) =>
-//     <UserState>{
-//         id: 42,
-//         email: 'skk@iu.io',
-//         firstName: 'Lover',
-//         lastName: 'Lovericj',
-//         balance: 0,
-//     };
+export const checkUserState = (state: RootState) => Boolean(state.user.user.id);
+export const getUserState = (state: RootState) => state.user.user;
+export const getUserId = (state: RootState) => state.user.user.id;

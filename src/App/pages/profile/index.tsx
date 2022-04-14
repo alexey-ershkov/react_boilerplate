@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { useGetUserInfoQuery } from '../../../utils/api';
+import { useGetUserInfoQuery } from '../../../api';
 import { CardWrapper } from '../../components/card-wrapper';
 import { Header } from '../../components/header';
 import { Layout } from '../../components/layout';
@@ -15,12 +16,19 @@ const buttons = [
 ];
 
 export const ProfilePage = () => {
-    const { data } = useGetUserInfoQuery();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { data, isSuccess, isError } = useGetUserInfoQuery();
+    const navigate = useNavigate();
+
+    if (isError) {
+        navigate(ROUTES.main);
+    }
+
     return (
         <Layout
             header={<Header pageName={HEADERS.profile} buttons={buttons} />}
             left={<CardWrapper>profile</CardWrapper>}
-            right={<CardWrapper>cards {data}</CardWrapper>}
+            right={<CardWrapper>cards</CardWrapper>}
         />
     );
 };

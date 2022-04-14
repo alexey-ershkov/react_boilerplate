@@ -2,7 +2,7 @@ import { NeutralColors } from '@fluentui/theme';
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { MOBILE_WIDTH } from '../styles';
+import { GAP, MOBILE_WIDTH } from '../styles';
 
 interface LayoutProps {
     header: React.ReactNode;
@@ -29,6 +29,7 @@ export const Layout = ({ header, left, right = null }: LayoutProps) => {
     const Columns = styled.div`
         display: flex;
         flex-direction: row;
+        gap: ${GAP.l};
     `;
     return (
         <StyledLayout>

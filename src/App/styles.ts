@@ -17,6 +17,9 @@ export const HEADER_GRADIENT = `
 export const FONTS = {
     header: `font-size: ${FontSizes.size68}; font-weight: ${FontWeights.semibold};`,
     localHeader: `font-size: ${FontSizes.size32}; font-weight: ${FontWeights.regular};`,
+    localHeaderBold: `font-size: ${FontSizes.size32}; font-weight: ${FontWeights.semibold};`,
+    text: `font-size: ${FontSizes.size20}; font-weight: ${FontWeights.regular};`,
+    smallText: `font-size: ${FontSizes.size16}; font-weight: ${FontWeights.regular}; color: ${palette.neutralSecondary}`,
 };
 
 export const MOBILE_WIDTH = '420px';

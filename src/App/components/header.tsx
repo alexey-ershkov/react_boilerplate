@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { FONTS, HEADER_GRADIENT, MOBILE_WIDTH } from '../styles';
+import { MOBILE_WIDTH } from '../styles';
 
 interface HeaderProps {
     pageName: React.ReactNode;

@@ -2,9 +2,11 @@ import { DefaultButton } from '@fluentui/react';
 import { CreateUserInfo, decamelize } from 'besthack_exchange_api_typings_and_utils';
 import * as React from 'react';
 import { Form } from 'react-final-form';
+import { useNavigate } from 'react-router-dom';
 
-import { useRegisterMutation } from '../../../../utils/api';
+import { useRegisterMutation } from '../../../../api';
 import { BtnRightRow, SignupFinalFormRow } from '../../../containers/final-form-fields';
+import { ROUTES } from '../../../routes';
 
 interface SubmitData {
     name: string;
@@ -23,8 +25,6 @@ const onSubmit =
             email,
             password,
         };
-
-        console.log(mappedData);
         registerFunc(decamelize(mappedData));
     };
 
@@ -36,6 +36,11 @@ const confirmField = SignupFinalFormRow('confirm', 'Repeat password', 'password'
 
 export const SignupForm = () => {
     const [register, data] = useRegisterMutation();
+    const navigate = useNavigate();
+
+    if (data) {
+        navigate(ROUTES.profile);
+    }
 
     return (
         <Form
