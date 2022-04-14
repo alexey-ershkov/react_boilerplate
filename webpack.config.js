@@ -1,23 +1,25 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
+
 const styledComponentsTransformer = createStyledComponentsTransformer();
 
 module.exports = (env) => ({
     entry: './src/index.tsx',
     output: {
         path: path.join(__dirname, '/dist'),
-        filename: '[contenthash].bundle.js'
+        filename: '[contenthash].bundle.js',
     },
     devServer: {
         port: 3000,
         watchFiles: path.join(__dirname, '/src'),
+        historyApiFallback: true,
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js']
+        extensions: ['.ts', '.tsx', '.js'],
     },
     module: {
         rules: [
@@ -26,8 +28,8 @@ module.exports = (env) => ({
                 loader: 'ts-loader',
                 exclude: /node_modules/,
                 options: {
-                    getCustomTransformers: () => ({before: [styledComponentsTransformer]})
-                }
+                    getCustomTransformers: () => ({ before: [styledComponentsTransformer] }),
+                },
             },
             {
                 test: /\.s?[ca]ss$/i,
@@ -38,15 +40,15 @@ module.exports = (env) => ({
                     'css-loader',
                     'postcss-loader',
                     'sass-loader',
-                ]
-            }
-        ]
+                ],
+            },
+        ],
     },
     plugins: [
-        new HtmlWebpackPlugin({template: './src/index.html'}),
-        new MiniCssExtractPlugin({filename: '[contenthash].min.css'}),
+        new HtmlWebpackPlugin({ template: './src/index.html' }),
+        new MiniCssExtractPlugin({ filename: '[contenthash].min.css' }),
     ],
     optimization: {
-        minimizer: [new TerserPlugin({extractComments: false})],
+        minimizer: [new TerserPlugin({ extractComments: false })],
     },
-})
+});
