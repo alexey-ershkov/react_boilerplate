@@ -10,7 +10,7 @@ import * as url from 'url';
 // Define a service using a base URL and expected endpoints
 export const api = createApi({
     reducerPath: 'api',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000' }),
+    baseQuery: fetchBaseQuery({ baseUrl: process.env.API_URL }),
     endpoints: (builder) => ({
         getUserInfo: builder.query<UserInfo, void>({
             query: () => '/',
