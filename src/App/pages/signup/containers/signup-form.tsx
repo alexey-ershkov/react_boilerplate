@@ -3,8 +3,30 @@ import * as React from 'react';
 import { Form } from 'react-final-form';
 
 import { BtnRightRow, SignupFinalFormRow } from '../../../containers/final-form-fields';
+import { CreateUserInfo, decamelize } from 'besthack_exchange_api_typings_and_utils';
+import { useRegisterMutation } from '../../../../utils/api';
 
-const onSubmit = () => {};
+interface SubmitData {
+    name: string;
+    surname: string;
+    email: string;
+    password: string;
+    confirm: string;
+}
+
+const onSubmit =
+    (registerFunc) =>
+    ({ name, surname, email, password }: SubmitData) => {
+        const mappedData: CreateUserInfo = {
+            firstName: name,
+            lastName: surname,
+            email,
+            password,
+        };
+
+        console.log(mappedData);
+        registerFunc(decamelize(mappedData));
+    };
 
 const nameField = SignupFinalFormRow('name', 'First name');
 const surnameField = SignupFinalFormRow('surname', 'Last name');
@@ -13,9 +35,11 @@ const passwordField = SignupFinalFormRow('password', 'Password', 'password');
 const confirmField = SignupFinalFormRow('confirm', 'Repeat password', 'password');
 
 export const SignupForm = () => {
+    const [register, data] = useRegisterMutation();
+
     return (
         <Form
-            onSubmit={onSubmit}
+            onSubmit={onSubmit(register)}
             render={({ handleSubmit }) => (
                 <form onSubmit={handleSubmit}>
                     {nameField}

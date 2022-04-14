@@ -15,7 +15,7 @@ const buttons = [
 ];
 
 export const ProfilePage = () => {
-    const { data, error, isLoading } = useGetUserInfoQuery();
+    const { data } = useGetUserInfoQuery();
     return (
         <Layout
             header={<Header pageName={HEADERS.profile} buttons={buttons} />}
