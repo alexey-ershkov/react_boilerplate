@@ -3,13 +3,13 @@ import { UserInfo } from 'besthack_exchange_api_typings_and_utils';
 import { AuthUserInfo } from 'besthack_exchange_api_typings_and_utils/models/User';
 import { FormApi } from 'final-form';
 import * as React from 'react';
+import { useState } from 'react';
 import { Field, Form } from 'react-final-form';
+import { useStore } from 'react-redux';
 
 import { api } from '../../../../utils/api';
 import { validation } from '../../../../utils/form-helpers';
 import { BtnRightRow, FinalFormField, Row } from '../../../containers/final-form-fields';
-import { useState } from 'react';
-import { useStore } from 'react-redux';
 
 const emailField = FinalFormField('email', null, 'E-mail');
 const passwordField = FinalFormField('password', 'password', 'Password');

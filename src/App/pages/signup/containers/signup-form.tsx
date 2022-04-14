@@ -1,10 +1,10 @@
 import { DefaultButton } from '@fluentui/react';
+import { CreateUserInfo, decamelize } from 'besthack_exchange_api_typings_and_utils';
 import * as React from 'react';
 import { Form } from 'react-final-form';
 
-import { BtnRightRow, SignupFinalFormRow } from '../../../containers/final-form-fields';
-import { CreateUserInfo, decamelize } from 'besthack_exchange_api_typings_and_utils';
 import { useRegisterMutation } from '../../../../utils/api';
+import { BtnRightRow, SignupFinalFormRow } from '../../../containers/final-form-fields';
 
 interface SubmitData {
     name: string;

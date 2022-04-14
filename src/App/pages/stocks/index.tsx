@@ -1,12 +1,12 @@
+import { decamelize } from 'besthack_exchange_api_typings_and_utils';
 import * as React from 'react';
+import { useEffect } from 'react';
 
+import { useGetAllStocksQuery, useRegisterMutation } from '../../../utils/api';
 import { Header } from '../../components/header';
 import { Layout } from '../../components/layout';
 import { ROUTES } from '../../routes';
 import { HEADER_BUTTONS, HEADERS } from '../../texts';
-import { useGetAllStocksQuery, useRegisterMutation } from '../../../utils/api';
-import { useEffect } from 'react';
-import { decamelize } from 'besthack_exchange_api_typings_and_utils';
 
 const buttons = [
     {
