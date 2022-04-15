@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import { CardWrapper } from '../../../../components/CardWrapper';
 import { COLORS, GAP } from '../../../../constants/styles';
-import { StyledBaselineRow, StyledElemRight } from '../../../../styled';
+import { StyledAlignBottomRow, StyledElemRight } from '../../../../styled';
 import { Balance, Label } from './styled';
 
 export const UserInfo = ({ firstName, lastName, email, balance }: UserInfoProps) => {
@@ -16,10 +16,10 @@ export const UserInfo = ({ firstName, lastName, email, balance }: UserInfoProps)
                 size={PersonaSize.size120}
                 initialsColor={COLORS.DEFAULT}
             />
-            <StyledBaselineRow>
+            <StyledAlignBottomRow gap={GAP.xl}>
                 <Label>Balance</Label>
                 <Balance>{balance} $</Balance>
-            </StyledBaselineRow>
+            </StyledAlignBottomRow>
             <StyledElemRight>
                 <DefaultButton>Fill</DefaultButton>
             </StyledElemRight>

@@ -16,7 +16,7 @@ export const StyledLayout = styled.div`
 
     padding: 0 15vw;
 
-    @media (min-width: ${MOBILE_WIDTH}) and (max-width: ${TABLET_WIDTH + 1}) {
+    @media (max-width: ${TABLET_WIDTH}) {
         padding: 0 5vw;
     }
     @media (max-width: ${MOBILE_WIDTH}) {

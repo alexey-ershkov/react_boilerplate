@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
-export const StyledRow = styled.div`
+export const StyledRow = styled.div<{ gap?: string }>`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    gap: ${({ gap }) => gap};
 `;
 export const StyledElemRight = styled.div`
     width: 100%;
@@ -11,9 +13,11 @@ export const StyledElemRight = styled.div`
     flex-direction: column;
     align-items: end;
 `;
-export const StyledBaselineRow = styled.div`
+export const StyledAlignBottomRow = styled.div<{ gap: string }>`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: end;
+
+    gap: ${({ gap }) => gap};
 `;
