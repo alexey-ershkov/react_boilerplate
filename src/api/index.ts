@@ -93,4 +93,5 @@ export const {
     useLoginMutation,
     useGetUserStocksQuery,
     useAddStockMutation,
+    useDeleteStockMutation,
 } = api;

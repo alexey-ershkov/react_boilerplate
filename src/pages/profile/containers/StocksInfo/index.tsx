@@ -6,6 +6,7 @@ import { useGetUserStocksQuery } from '../../../../api';
 import { CardUI } from '../../../../components/CardWrapper';
 import { StockCard } from '../../../../containers/StockCard';
 import { CardStockInfo } from '../../../../utils/stockInfoTypes';
+import { ColWrapper } from '../../styled';
 import { ErrorMsg } from './styled';
 
 export const UserStocks = () => {
@@ -20,13 +21,13 @@ export const UserStocks = () => {
 
     if (isSuccess) {
         return (
-            <>
+            <ColWrapper>
                 {stocks.map((stock, idx) => (
                     <CardUI>
                         <StockCard {...stock} key={idx} />
                     </CardUI>
                 ))}
-            </>
+            </ColWrapper>
         );
     }
     return <ErrorMsg>Акции загружаются</ErrorMsg>;

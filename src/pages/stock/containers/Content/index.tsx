@@ -2,10 +2,10 @@ import { Image, ImageFit, Link as UILink } from '@fluentui/react';
 import { Quote, Stock } from 'besthack_exchange_api_typings_and_utils';
 import React from 'react';
 
-import { CardUI } from '../../../components/CardWrapper';
-import { NumberInfo } from '../../../components/NumberInfo';
-import { SingleStock } from '../../singleStock';
-import { Col, LocalHeader, Row } from '../styled';
+import { CardUI } from '../../../../components/CardWrapper';
+import { NumberInfo } from '../../../../components/NumberInfo';
+import { SingleStock } from '../../../singleStock';
+import { Col, LocalHeader, Row } from '../../styled';
 import { LeftCol, NextLogoCol } from './styled';
 
 interface ContentProps {

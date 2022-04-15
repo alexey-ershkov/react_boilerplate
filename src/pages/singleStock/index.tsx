@@ -44,7 +44,6 @@ export const SingleStock: FC = () => {
             />
             <div style={{ width: '100%', height: '50vh' }}>
                 <ChartComponent
-                    isMinimal
                     withVolume={withVolume}
                     type={type}
                     data={candlesData.data[0].candles as StockCandle[]}
