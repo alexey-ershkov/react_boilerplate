@@ -4,7 +4,7 @@ import { FontSizes, FontWeights } from '@fluentui/theme';
 const { palette } = getTheme();
 
 export const COLORS = {
-    RED: SharedColors.red20,
+    RED: SharedColors.redOrange10,
     GREEN: SharedColors.greenCyan10,
 };
 

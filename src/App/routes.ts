@@ -3,5 +3,5 @@ export const ROUTES = {
     login: '/login',
     signup: '/signup',
     profile: '/portfolio',
-    stock: '/stock/:symbol',
+    stock: '/stock',
 };
