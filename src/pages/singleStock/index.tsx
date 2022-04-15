@@ -1,4 +1,4 @@
-import { StockCandle, StockResolution } from 'besthack_exchange_api_typings_and_utils';
+import { StockCandle } from 'besthack_exchange_api_typings_and_utils';
 import { formatISO, sub } from 'date-fns';
 import React, { FC, useState } from 'react';
 import { useParams } from 'react-router-dom';
