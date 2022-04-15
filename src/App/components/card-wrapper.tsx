@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { DEPTH, GAP, MOBILE_WIDTH } from '../styles';
+import { DEPTH, GAP, MOBILE_WIDTH, WILD_WIDTH } from '../styles';
 
 interface CardWrapperProps {
     children: React.ReactNode;
@@ -15,8 +15,11 @@ export const CardWrapper = ({ children, styles = {} }: CardWrapperProps) => {
         background-color: white;
         box-sizing: border-box;
 
-        @media (min-width: ${MOBILE_WIDTH}) {
+        @media (min-width: ${WILD_WIDTH}) {
             width: 49%;
+        }
+        @media (max-width: ${MOBILE_WIDTH}) {
+            width: 100%;
         }
 
         ${styles}

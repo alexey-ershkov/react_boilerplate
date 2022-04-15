@@ -7,7 +7,7 @@ import { useGetAllStocksQuery, useGetUserInfoQuery } from '../../../api';
 import { CardStockInfo } from '../../../utils/stock-info-types';
 import { Header } from '../../components/header';
 import { Layout } from '../../components/layout';
-import { StockCard } from '../../containers/stock-card';
+import { Index } from '../../containers/StockCard';
 import { ROUTES } from '../../routes';
 import { GAP, MOBILE_WIDTH } from '../../styles';
 import { HEADER_BUTTONS, HEADERS } from '../../texts';
@@ -64,7 +64,7 @@ export const CommonPage = () => {
                 isSuccess ? (
                     <CardsWrapper>
                         {stocks.map((stock, idx) => (
-                            <StockCard {...stock} key={idx} />
+                            <Index {...stock} key={idx} />
                         ))}
                     </CardsWrapper>
                 ) : null

@@ -27,9 +27,7 @@ export const Header = ({ pageName, buttons = [] }: HeaderProps) => {
     `;
 
     const HeaderButton = styled(PrimaryButton)`
-        @media (min-width: ${MOBILE_WIDTH}) {
-            min-height: 52px;
-        }
+        min-height: 52px;
     `;
 
     return (
