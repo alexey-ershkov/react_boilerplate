@@ -77,14 +77,15 @@ export const Confirm = ({
                 <Text block variant="small">
                     Are you shure?
                 </Text>
-                <TextField
-                    style={{ padding: '4px' }}
-                    onChange={onChangeTextFieldValue}
-                    value={String(count)}
-                    errorMessage={
-                        isError ? 'Something went wrong. Check if you have enough money' : null
-                    }
-                />
+                <div style={{ margin: '10px 0' }}>
+                    <TextField
+                        onChange={onChangeTextFieldValue}
+                        value={String(count)}
+                        errorMessage={
+                            isError ? 'Something went wrong. Check if you have enough money' : null
+                        }
+                    />
+                </div>
                 <DefaultButton onClick={callback === 'getMoney' ? balanceCallback : stockCallback}>
                     Confirm
                 </DefaultButton>
