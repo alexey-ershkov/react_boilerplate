@@ -19,7 +19,13 @@ export const FONTS = {
     localHeader: `font-size: ${FontSizes.size32}; font-weight: ${FontWeights.regular};`,
     localHeaderBold: `font-size: ${FontSizes.size32}; font-weight: ${FontWeights.semibold};`,
     text: `font-size: ${FontSizes.size20}; font-weight: ${FontWeights.regular};`,
-    smallText: `font-size: ${FontSizes.size16}; font-weight: ${FontWeights.regular}; color: ${palette.neutralSecondary}`,
+    smallText: `font-size: ${FontSizes.size16};
+    font-weight: ${FontWeights.regular};
+    color: ${palette.neutralSecondary};
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    `,
 };
 
 export const MOBILE_WIDTH = '420px';

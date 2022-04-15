@@ -30,7 +30,7 @@ const onSubmit =
 
 const nameField = SignupFinalFormRow('name', 'First name');
 const surnameField = SignupFinalFormRow('surname', 'Last name');
-const emailField = SignupFinalFormRow('email', 'E=mail');
+const emailField = SignupFinalFormRow('email', 'E-mail');
 const passwordField = SignupFinalFormRow('password', 'Password', 'password');
 const confirmField = SignupFinalFormRow('confirm', 'Repeat password', 'password');
 

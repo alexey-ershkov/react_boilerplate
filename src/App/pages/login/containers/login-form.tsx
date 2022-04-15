@@ -8,6 +8,7 @@ import { useLoginMutation } from '../../../../api';
 import { validation } from '../../../../utils/form-helpers';
 import { BtnRightRow, FinalFormField, Row } from '../../../containers/final-form-fields';
 import { ROUTES } from '../../../routes';
+import { useEffect } from 'react';
 
 const emailField = FinalFormField('email', null, 'E-mail');
 const passwordField = FinalFormField('password', 'password', 'Password');
@@ -22,12 +23,14 @@ const onSubmit = (registerFunc) => (values: SubmitData) => {
 };
 
 export const LoginForm = () => {
-    const [login, data] = useLoginMutation();
+    const [login, { isSuccess }] = useLoginMutation();
     const navigate = useNavigate();
 
-    if (data) {
-        navigate(ROUTES.profile);
-    }
+    useEffect(() => {
+        if (isSuccess) {
+            navigate(ROUTES.profile);
+        }
+    }, [isSuccess]);
 
     return (
         <Form

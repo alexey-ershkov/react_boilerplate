@@ -21,7 +21,7 @@
     "@reduxjs/toolkit": "^1.8.1",
     "autoprefixer": "^10.4.0",
     "axios": "^0.26.1",
-    "besthack_exchange_api_typings_and_utils": "^1.0.0",
+    "besthack_exchange_api_typings_and_utils": "^1.0.1",
     "final-form": "^4.20.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

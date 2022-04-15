@@ -23,7 +23,9 @@ module.exports = {
         'import/prefer-default-export': 'off',
         'default-param-last': 'off',
         'no-param-reassign': 'off',
+        'react/jsx-props-no-spreading': 'off',
         'react/require-default-props': 'off',
+        'react/no-array-index-key': 'off',
         'react/function-component-definition': [
             'error',
             {

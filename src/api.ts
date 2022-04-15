@@ -1,6 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Stock, UserInfo } from 'besthack_exchange_api_typings_and_utils';
-import { AuthUserInfo, CreateUserInfo } from 'besthack_exchange_api_typings_and_utils/models/User';
+import {
+    Quote,
+    AuthUserInfo,
+    CreateUserInfo,
+    Stock,
+    UserInfo,
+} from 'besthack_exchange_api_typings_and_utils';
 
 export const api = createApi({
     reducerPath: 'api',
@@ -20,13 +25,16 @@ export const api = createApi({
         }),
         login: builder.mutation<UserInfo, AuthUserInfo>({
             query: (info) => ({
-                url: '/auth',
+                url: '/user/login',
                 method: 'POST',
                 body: info,
             }),
         }),
+        getUserStocks: builder.query<Stock & Quote[], void>({
+            query: () => '/user/stocks',
+        }),
         // stocks
-        getAllStocks: builder.query<Stock[], void>({
+        getAllStocks: builder.query<{ data: Stock & Quote[] }, void>({
             query: () => '/stock',
         }),
     }),
