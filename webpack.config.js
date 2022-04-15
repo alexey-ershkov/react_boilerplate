@@ -22,6 +22,7 @@ module.exports = () => {
         output: {
             path: path.join(__dirname, '/dist'),
             filename: '[contenthash].bundle.js',
+            publicPath: '/',
         },
         devServer: {
             port: 3000,
