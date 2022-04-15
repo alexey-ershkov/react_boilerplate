@@ -1,16 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { FONTS, HEADER_GRADIENT } from './styles';
+import { FONTS, HEADER_GRADIENT, MOBILE_WIDTH } from './styles';
 
 export const HEADER_BUTTONS = {
     goLogin: 'Create your portfolio',
-    goProfile: 'Show my stock portfolio',
-    goMain: 'Show all available stocks',
+    goProfile: 'My stock portfolio',
+    goMain: 'All available stocks',
 };
 
 const Header = styled.h1`
-    ${FONTS.header}
+    ${FONTS.header};
+    @media (max-width: ${MOBILE_WIDTH}) {
+        ${FONTS.mobileHeader}
+    }
 `;
 const Blue = styled.span`
     ${HEADER_GRADIENT}

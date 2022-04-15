@@ -1,33 +1,39 @@
 import { camelize } from 'besthack_exchange_api_typings_and_utils';
 import React, { useMemo } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { useGetAllStocksQuery, useGetUserInfoQuery } from '../../api';
+import { useGetUserInfoQuery, useStockBySymbolQuery } from '../../api';
 import { ROUTES } from '../../App/routes';
-import { CardUI } from '../../components/CardWrapper';
 import { Header } from '../../components/Header';
 import { Layout } from '../../components/Layout';
 import { HEADER_BUTTONS, HEADERS } from '../../constants/texts';
-import { StockCard } from '../../containers/StockCard';
-import { CardStockInfo } from '../../utils/stockInfoTypes';
-import { CardsWrapper, CardWrapper } from './styled';
+import { Content } from './Content';
+import { RightPanel } from './RightPanel';
 
-export const CommonPage = () => {
-    const { data, isSuccess } = useGetAllStocksQuery();
-    const stocks: CardStockInfo[] = useMemo(() => {
+export const StockPage = () => {
+    const { symbol } = useParams();
+
+    const { data, isSuccess } = useStockBySymbolQuery({ symbol });
+    const stock: typeof data.data = useMemo(() => {
         if (isSuccess && data) {
-            return data.data.map((gotStock) => camelize(gotStock));
+            return camelize(data.data);
         }
         return [];
     }, [data, isSuccess]);
 
     const user = useGetUserInfoQuery();
     const buttons = useMemo(() => {
+        const mainButton = {
+            text: HEADER_BUTTONS.goMain,
+            link: ROUTES.main,
+        };
         if (user.isError) {
             return [
                 {
                     text: HEADER_BUTTONS.goLogin,
                     link: ROUTES.login,
                 },
+                mainButton,
             ];
         }
         if (user.isSuccess) {
@@ -36,26 +42,25 @@ export const CommonPage = () => {
                     text: HEADER_BUTTONS.goProfile,
                     link: ROUTES.profile,
                 },
+                mainButton,
             ];
         }
-        return [];
+        return [mainButton];
     }, [user]);
 
     return (
         <Layout
             header={<Header pageName={HEADERS.main} buttons={buttons} />}
-            left={
-                isSuccess ? (
-                    <CardsWrapper>
-                        {stocks.map((stock, idx) => (
-                            <CardWrapper>
-                                <CardUI>
-                                    <StockCard {...stock} key={idx} />
-                                </CardUI>
-                            </CardWrapper>
-                        ))}
-                    </CardsWrapper>
-                ) : null
+            left={isSuccess ? <Content stock={stock} /> : null}
+            right={
+                <RightPanel
+                    isSuccess={user.isSuccess}
+                    isError={user.isError}
+                    user={user.data}
+                    stockAmount={stock.count}
+                    stockCost={stock.count * stock.currentPrice}
+                    symbol={stock.symbol}
+                />
             }
         />
     );

@@ -1,34 +1,45 @@
-import { Image, ImageFit, PersonaSize } from '@fluentui/react';
+import { Image, ImageFit } from '@fluentui/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { ROUTES } from '../../App/routes';
-import { CardWrapper } from '../../components/CardWrapper';
+import { NumberInfo } from '../../components/NumberInfo';
 import { GAP } from '../../constants/styles';
-import { NumberInfo } from '../../pages/stocks/components/NumberInfo';
-import { StyledAlignBottomRow, StyledRow } from '../../styled';
+import { StyledAlignBottomRow, StyledElemRight, StyledRow } from '../../styled';
 import { CardStockInfo } from '../../utils/stockInfoTypes';
-import { CardHeader, NameText } from './styled';
+import { BalanceText, CardHeader, NameText } from './styled';
 
-export const StockCard = ({ symbol, name, logo, currentPrice, percentChange }: CardStockInfo) => {
+export const StockCard = ({
+    symbol,
+    name,
+    logo,
+    currentPrice,
+    percentChange,
+    count = 0,
+}: CardStockInfo) => {
     return (
-        <CardWrapper>
-            <Link to={ROUTES.stock}>
-                <StyledRow>
-                    <CardHeader>{symbol}</CardHeader>
-                    <Image
-                        imageFit={ImageFit.centerCover}
-                        src={logo}
-                        alt={`${name} logo`}
-                        width={PersonaSize.size72}
-                        height={PersonaSize.size72}
-                    />
-                </StyledRow>
-                <StyledAlignBottomRow gap={GAP.xl}>
-                    <NumberInfo currentPrice={currentPrice} percentChange={percentChange} />
-                    <NameText>{name}</NameText>
-                </StyledAlignBottomRow>
-            </Link>
-        </CardWrapper>
+        <Link to={`${ROUTES.stock}/${symbol}`}>
+            <StyledRow>
+                <CardHeader>{symbol}</CardHeader>
+                <Image
+                    imageFit={ImageFit.centerCover}
+                    src={logo}
+                    alt={`${name} logo`}
+                    width={72}
+                    height={72}
+                />
+            </StyledRow>
+            <StyledAlignBottomRow gap={GAP.xl}>
+                <NumberInfo currentPrice={currentPrice} percentChange={percentChange} />
+                <NameText>{name}</NameText>
+            </StyledAlignBottomRow>
+            {count > 0 ? (
+                <StyledElemRight>
+                    <BalanceText>
+                        You have {count} stocks cost {(count * currentPrice).toFixed(2)} $
+                    </BalanceText>
+                </StyledElemRight>
+            ) : null}
+        </Link>
     );
 };

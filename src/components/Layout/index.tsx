@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Columns, StyledLayout } from './styled';
+import { Background, Columns, StyledLayout } from './styled';
 
 interface LayoutProps {
     header: React.ReactNode;
@@ -10,16 +10,18 @@ interface LayoutProps {
 
 export const Layout = ({ header, left, right = null }: LayoutProps) => {
     return (
-        <StyledLayout>
+        <Background>
             {header}
-            {right ? (
-                <Columns>
-                    {left}
-                    {right}
-                </Columns>
-            ) : (
-                left
-            )}
-        </StyledLayout>
+            <StyledLayout>
+                {right ? (
+                    <Columns>
+                        {left}
+                        {right}
+                    </Columns>
+                ) : (
+                    left
+                )}
+            </StyledLayout>
+        </Background>
     );
 };

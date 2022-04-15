@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { HeaderButton, Wrapper } from './styled';
+import { ButtonWrapper, HeaderButton, Wrapper } from './styled';
 
 interface HeaderProps {
     pageName: React.ReactNode;
@@ -17,7 +17,7 @@ export const Header = ({ pageName, buttons = [] }: HeaderProps) => {
     return (
         <Wrapper justify={justify}>
             {pageName}
-            <div>
+            <ButtonWrapper>
                 {buttons.map(({ text, link }, index) => {
                     return (
                         <Link key={index} to={link}>
@@ -25,7 +25,7 @@ export const Header = ({ pageName, buttons = [] }: HeaderProps) => {
                         </Link>
                     );
                 })}
-            </div>
+            </ButtonWrapper>
         </Wrapper>
     );
 };
