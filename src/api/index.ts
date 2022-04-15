@@ -16,7 +16,7 @@ export const api = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: process.env.API_URL, credentials: 'include' }),
     endpoints: (builder) => ({
         // user
-        getUserInfo: builder.query<UserInfo, void>({
+        getUserInfo: builder.query<{ data: UserInfo }, void>({
             query: () => '/user',
         }),
         register: builder.mutation<UserInfo, CreateUserInfo>({
@@ -75,4 +75,5 @@ export const {
     useStockCandlesQuery,
     useRegisterMutation,
     useLoginMutation,
+    useGetUserStocksQuery,
 } = api;
