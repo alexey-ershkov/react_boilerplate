@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 
 import { useStockBySymbolQuery, useStockCandlesQuery } from '../../api';
 import { ChartComponent, ChartType } from '../../components/Chart';
-import { CommandBar } from './CommadBar';
+import { CommandBar } from './CommandBar';
 import { rangeConfig, RangeType } from './Range';
 
 export const SingleStock: FC = () => {
