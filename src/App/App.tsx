@@ -3,11 +3,11 @@ import '../index.scss';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import { LoginPage } from '../pages/Login';
-import { ProfilePage } from '../pages/Profile';
-import { SignupPage } from '../pages/Signup';
-import { SingleStock } from '../pages/SingleStock';
-import { CommonPage } from '../pages/Stocks';
+import { LoginPage } from '../pages/login';
+import { ProfilePage } from '../pages/profile';
+import { SignupPage } from '../pages/signup';
+import { SingleStock } from '../pages/singleStock';
+import { CommonPage } from '../pages/stocks';
 import { ROUTES } from './routes';
 
 const App = () => {
