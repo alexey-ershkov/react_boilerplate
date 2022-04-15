@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { ROUTES } from '../../App/routes';
 import { CardWrapper } from '../../components/CardWrapper';
-import { NumberInfo } from '../../pages/stocks/components/NumberInfo';
+import { NumberInfo } from '../../pages/Stocks/components/NumberInfo';
 import { CardStockInfo } from '../../utils/stockInfoTypes';
 import { CardHeader, NameText, Row } from './styled';
 
