@@ -45,7 +45,7 @@ export const SingleStock: FC = () => {
                 onTypeChange={(newType) => setType(newType)}
                 onRangeChange={(newRange) => setRange(newRange)}
             />
-            <div style={{ width: '100%', height: '50vh' }}>
+            <div style={{ width: '100%', height: '33vh' }}>
                 <ChartComponent
                     withVolume={withVolume}
                     type={type}
