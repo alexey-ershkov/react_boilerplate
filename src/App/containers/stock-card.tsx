@@ -1,13 +1,13 @@
 import { Persona, PersonaSize } from '@fluentui/react';
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { CardStockInfo } from '../../utils/stock-info-types';
 import { CardWrapper } from '../components/card-wrapper';
 import { NumberInfo } from '../pages/stocks/components/number-info';
+import { ROUTES } from '../routes';
 import { FONTS, GAP } from '../styles';
-import { Link } from 'react-router-dom';
-import {ROUTES} from "../routes";
 
 export const StockCard = ({ symbol, name, logo, currentPrice, percentChange }: CardStockInfo) => {
     const Row = styled.div`

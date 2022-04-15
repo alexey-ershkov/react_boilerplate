@@ -1,9 +1,10 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import { COLORS, FONTS, GAP } from '../../../styles';
-import { CardStockInfo } from '../../../../utils/stock-info-types';
-import { useMemo } from 'react';
 import { Icon } from '@fluentui/react';
+import * as React from 'react';
+import { useMemo } from 'react';
+import styled from 'styled-components';
+
+import { CardStockInfo } from '../../../../utils/stock-info-types';
+import { COLORS, FONTS, GAP } from '../../../styles';
 
 type NumberInfoProps = Pick<CardStockInfo, 'currentPrice' | 'percentChange'>;
 

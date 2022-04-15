@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
-    Quote,
     AuthUserInfo,
     CreateUserInfo,
+    Quote,
     Stock,
     UserInfo,
 } from 'besthack_exchange_api_typings_and_utils';

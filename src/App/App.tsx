@@ -17,7 +17,7 @@ const App = () => {
                 <Route path={ROUTES.login} element={<LoginPage />} />
                 <Route path={ROUTES.signup} element={<SignupPage />} />
                 <Route path={ROUTES.profile} element={<ProfilePage />} />
-                {/*<Route path={ROUTES.stock} component={Img} />*/}
+                {/* <Route path={ROUTES.stock} component={Img} /> */}
             </Routes>
         </Router>
     );
