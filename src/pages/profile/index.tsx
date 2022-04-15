@@ -1,4 +1,4 @@
-import { camelize } from 'besthack_exchange_api_typings_and_utils';
+import { camelize, UserInfo as UserInfoType } from 'besthack_exchange_api_typings_and_utils';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -30,7 +30,7 @@ export const ProfilePage = () => {
     return (
         <Layout
             header={<Header pageName={HEADERS.profile} buttons={buttons} />}
-            left={isSuccess ? <UserInfo {...camelize(data.data)} /> : null}
+            left={isSuccess ? <UserInfo {...(camelize(data.data) as UserInfoType)} /> : null}
             right={isSuccess ? <UserStocks id={data.data.id} /> : null}
         />
     );
