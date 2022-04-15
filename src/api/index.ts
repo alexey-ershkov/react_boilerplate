@@ -5,6 +5,7 @@ import {
     CreateUserInfo,
     Quote,
     Stock,
+    StockCandleQuery,
     StockCandleResponse,
     UserInfo,
 } from 'besthack_exchange_api_typings_and_utils';
@@ -45,8 +46,24 @@ export const api = createApi({
         >({
             query: ({ symbol }) => `/stock/${symbol}`,
         }),
-        stockCandles: builder.query<AppResponse<StockCandleResponse>, { symbol: string }>({
-            query: ({ symbol }) => `/stock/candles?symbols=${symbol}`,
+        stockCandles: builder.query<AppResponse<StockCandleResponse>, StockCandleQuery>({
+            query: ({ symbols, resolution, timeFrom, timeTo }) => {
+                let params = `symbols=${symbols}`;
+
+                if (resolution) {
+                    params += `&resolution=${resolution}`;
+                }
+
+                if (timeFrom) {
+                    params += `&timeFrom=${timeFrom}`;
+                }
+
+                if (timeTo) {
+                    params += `&timeTo=${timeTo}`;
+                }
+
+                return `/stock/candles?${params}`;
+            },
         }),
     }),
 });

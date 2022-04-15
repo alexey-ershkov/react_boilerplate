@@ -11,6 +11,7 @@ interface ChartProps {
     data: StockCandle[];
     type: ChartType;
     withVolume?: boolean;
+    isMinimal?: boolean;
 }
 
 interface LightweightStockCandle extends StockCandle {
@@ -38,16 +39,41 @@ const barColors = {
     wickUpColor: '#838ca1',
 };
 
-export const ChartComponent: FC<ChartProps> = ({ data, type, withVolume = false }) => {
+export const ChartComponent: FC<ChartProps> = ({
+    data,
+    type,
+    withVolume = false,
+    isMinimal = false,
+}) => {
     const chartContainerRef = useRef<HTMLDivElement>();
 
     useEffect(() => {
         if (chartContainerRef.current) {
             const chart = createChart(chartContainerRef.current, {
                 width: chartContainerRef.current.clientWidth,
-                height: 300,
+                height: chartContainerRef.current.clientHeight,
                 crosshair: {
                     mode: CrosshairMode.Normal,
+                    horzLine: {
+                        visible: !isMinimal,
+                    },
+                    vertLine: {
+                        visible: !isMinimal,
+                    },
+                },
+                grid: {
+                    horzLines: {
+                        visible: !isMinimal,
+                    },
+                    vertLines: {
+                        visible: !isMinimal,
+                    },
+                },
+                rightPriceScale: {
+                    visible: !isMinimal,
+                },
+                timeScale: {
+                    visible: !isMinimal,
                 },
                 localization: {
                     priceFormatter: (price) => `${price.toFixed(2)} $`,
@@ -64,15 +90,18 @@ export const ChartComponent: FC<ChartProps> = ({ data, type, withVolume = false 
             let series;
 
             if (type === 'bar') {
-                series = chart.addBarSeries({ ...barColors });
+                series = chart.addBarSeries({ ...barColors, priceLineVisible: !isMinimal });
             }
 
             if (type === 'candle') {
-                series = chart.addCandlestickSeries({ ...barColors });
+                series = chart.addCandlestickSeries({ ...barColors, priceLineVisible: !isMinimal });
             }
 
             if (type === 'line') {
-                series = chart.addLineSeries({ color: CommunicationColors.primary });
+                series = chart.addLineSeries({
+                    color: CommunicationColors.primary,
+                    priceLineVisible: !isMinimal,
+                });
             }
 
             if (type === 'area') {
@@ -80,6 +109,7 @@ export const ChartComponent: FC<ChartProps> = ({ data, type, withVolume = false 
                     lineColor: CommunicationColors.primary,
                     topColor: CommunicationColors.tint20,
                     bottomColor: NeutralColors.white,
+                    priceLineVisible: !isMinimal,
                 });
             }
 
@@ -91,6 +121,7 @@ export const ChartComponent: FC<ChartProps> = ({ data, type, withVolume = false 
                     priceFormat: {
                         type: 'volume',
                     },
+                    priceLineVisible: false,
                     priceScaleId: '',
                     scaleMargins: {
                         top: 0.8,
@@ -111,5 +142,5 @@ export const ChartComponent: FC<ChartProps> = ({ data, type, withVolume = false 
         }
     }, [data, type, withVolume]);
 
-    return <div ref={chartContainerRef} />;
+    return <div style={{ width: '100%', height: '100%' }} ref={chartContainerRef} />;
 };
