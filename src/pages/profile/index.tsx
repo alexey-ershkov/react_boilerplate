@@ -1,12 +1,14 @@
-import React from 'react';
+import { camelize } from 'besthack_exchange_api_typings_and_utils';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useGetUserInfoQuery } from '../../api';
 import { ROUTES } from '../../App/routes';
-import { CardWrapper } from '../../components/CardWrapper';
 import { Header } from '../../components/Header';
 import { Layout } from '../../components/Layout';
 import { HEADER_BUTTONS, HEADERS } from '../../constants/texts';
+import { UserStocks } from './containers/StocksInfo';
+import { UserInfo } from './containers/UserInfo';
 
 const buttons = [
     {
@@ -16,19 +18,20 @@ const buttons = [
 ];
 
 export const ProfilePage = () => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { data, isSuccess, isError } = useGetUserInfoQuery();
     const navigate = useNavigate();
 
-    if (isError) {
-        navigate(ROUTES.main);
-    }
+    useEffect(() => {
+        if (isError) {
+            navigate(ROUTES.main);
+        }
+    }, [isError]);
 
     return (
         <Layout
             header={<Header pageName={HEADERS.profile} buttons={buttons} />}
-            left={<CardWrapper>profile</CardWrapper>}
-            right={<CardWrapper>cards</CardWrapper>}
+            left={isSuccess ? <UserInfo {...camelize(data.data)} /> : null}
+            right={isSuccess ? <UserStocks id={data.data.id} /> : null}
         />
     );
 };

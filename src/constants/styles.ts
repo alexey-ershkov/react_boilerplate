@@ -6,6 +6,7 @@ const { palette } = getTheme();
 export const COLORS = {
     RED: SharedColors.red20,
     GREEN: SharedColors.greenCyan10,
+    DEFAULT: palette.themePrimary,
 };
 
 export const HEADER_GRADIENT = `
@@ -20,15 +21,13 @@ export const FONTS = {
     localHeaderBold: `font-size: ${FontSizes.size32}; font-weight: ${FontWeights.semibold};`,
     text: `font-size: ${FontSizes.size20}; font-weight: ${FontWeights.regular};`,
     smallText: `font-size: ${FontSizes.size16};
-    font-weight: ${FontWeights.regular};
-    color: ${palette.neutralSecondary};
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+        font-weight: ${FontWeights.regular};
+        color: ${palette.neutralSecondary};
     `,
 };
 
-export const MOBILE_WIDTH = '420px';
+export const MOBILE_WIDTH = '640px';
+export const TABLET_WIDTH = '960px';
 
 export const GAP = {
     xl: '30px',

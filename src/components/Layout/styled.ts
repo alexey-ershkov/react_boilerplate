@@ -1,7 +1,7 @@
 import { NeutralColors } from '@fluentui/theme';
 import styled from 'styled-components';
 
-import { GAP, MOBILE_WIDTH } from '../../constants/styles';
+import { GAP, MOBILE_WIDTH, TABLET_WIDTH } from '../../constants/styles';
 
 export const StyledLayout = styled.div`
     background-color: ${NeutralColors.gray10};
@@ -14,12 +14,24 @@ export const StyledLayout = styled.div`
     flex-direction: column;
     align-content: center;
 
-    @media (min-width: ${MOBILE_WIDTH}) {
-        padding: 0 15vw;
+    padding: 0 15vw;
+
+    @media (min-width: ${MOBILE_WIDTH}) and (max-width: ${TABLET_WIDTH + 1}) {
+        padding: 0 5vw;
+    }
+    @media (max-width: ${MOBILE_WIDTH}) {
+        padding: 0;
     }
 `;
 export const Columns = styled.div`
     display: flex;
-    flex-direction: row;
     gap: ${GAP.l};
+
+    @media (min-width: ${TABLET_WIDTH + 1}) {
+        flex-direction: row;
+    }
+    @media (max-width: ${TABLET_WIDTH}) {
+        flex-direction: column;
+        background: red;
+    }
 `;

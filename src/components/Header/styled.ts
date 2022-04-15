@@ -8,9 +8,7 @@ export const Wrapper = styled.div<{ justify: string }>`
     flex-direction: row;
     justify-content: ${({ justify }) => justify};
     align-items: center;
-    @media (min-width: ${MOBILE_WIDTH}) {
-        height: 200px;
-    }
+    width: 100%;
 `;
 
 export const HeaderButton = styled(PrimaryButton)`
