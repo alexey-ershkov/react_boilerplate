@@ -10,7 +10,7 @@ export const Wrapper = styled.div<{ justify: string }>`
     justify-content: ${({ justify }) => justify};
     align-items: center;
     width: 100%;
-    padding: ${GAP.xxl} 5vw;
+    padding: ${GAP.xl} 5vw;
 `;
 
 export const HeaderButton = styled(PrimaryButton)`

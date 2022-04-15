@@ -25,7 +25,7 @@ export const UserInfo = ({ firstName, lastName, email, balance }: UserInfoProps)
                 />
                 <StyledAlignBottomRow gap={GAP.xl}>
                     <Label>Balance</Label>
-                    <Balance>{balance.toFixed(2)} $</Balance>
+                    <Balance>{Number(balance).toFixed(2)} $</Balance>
                 </StyledAlignBottomRow>
                 <StyledElemRight>
                     <DefaultButton id={buttonId} onClick={toggleIsCalloutVisible}>

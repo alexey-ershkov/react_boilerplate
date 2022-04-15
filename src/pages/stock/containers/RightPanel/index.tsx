@@ -41,7 +41,7 @@ export const RightPanel = ({
                     <SmallText>You have</SmallText>
                 </VerticalPair>
                 <VerticalPair>
-                    <LocalHeader>{stockCost.toFixed(2)} $</LocalHeader>
+                    <LocalHeader>{Number(stockCost).toFixed(2)} $</LocalHeader>
                     <SmallTextRight>cost</SmallTextRight>
                 </VerticalPair>
             </StyledRow>

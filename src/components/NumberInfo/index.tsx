@@ -21,7 +21,7 @@ export const NumberInfo = ({ currentPrice, percentChange }: NumberInfoProps) => 
         <SmallWrapper>
             <Num style={numStyle}>
                 <Icon iconName={iconName} />
-                {percentChange.toFixed(2)}%
+                {Number(percentChange).toFixed(2)}%
             </Num>
         </SmallWrapper>
     );
