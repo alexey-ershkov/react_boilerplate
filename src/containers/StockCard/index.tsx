@@ -12,7 +12,7 @@ import { CardHeader, NameText } from './styled';
 export const StockCard = ({ symbol, name, logo, currentPrice, percentChange }: CardStockInfo) => {
     return (
         <CardWrapper>
-            <Link to={ROUTES.stock}>
+            <Link to={`${ROUTES.stock}/${symbol}`}>
                 <StyledRow>
                     <CardHeader>{symbol}</CardHeader>
                     <Persona

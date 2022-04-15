@@ -29,7 +29,7 @@ const authValidationSchema = {
             maxLengthValidator,
             {
                 validator: Validators.minLength,
-                customArgs: { length: 6 },
+                customArgs: { length: 3 },
                 message: 'Too short',
             },
         ],
