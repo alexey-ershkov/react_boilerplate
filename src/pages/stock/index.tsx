@@ -16,9 +16,9 @@ export const StockPage = () => {
     const { data, isSuccess } = useStockBySymbolQuery({ symbol });
     const stock: typeof data.data = useMemo(() => {
         if (isSuccess && data) {
-            return camelize(data.data);
+            return camelize(data.data) as typeof data.data;
         }
-        return [];
+        return {} as typeof data.data;
     }, [data, isSuccess]);
 
     const user = useGetUserInfoQuery();

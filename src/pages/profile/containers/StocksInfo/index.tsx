@@ -13,7 +13,7 @@ export const UserStocks = () => {
 
     const stocks: CardStockInfo[] = useMemo(() => {
         if (isSuccess && data) {
-            return data.data.map((gotStock) => camelize(gotStock));
+            return data.data.map((gotStock) => camelize(gotStock)) as CardStockInfo[];
         }
         return [];
     }, [data, isSuccess]);

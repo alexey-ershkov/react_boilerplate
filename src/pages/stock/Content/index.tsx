@@ -4,6 +4,7 @@ import React from 'react';
 
 import { CardUI } from '../../../components/CardWrapper';
 import { NumberInfo } from '../../../components/NumberInfo';
+import { SingleStock } from '../../singleStock';
 import { Col, LocalHeader, Row } from '../styled';
 import { LeftCol, NextLogoCol } from './styled';
 
@@ -33,6 +34,7 @@ export const Content = ({ stock }: ContentProps) => {
                     <UILink href={website} target="_blank">
                         Website
                     </UILink>
+                    <SingleStock />
                 </Col>
             </CardUI>
         </LeftCol>

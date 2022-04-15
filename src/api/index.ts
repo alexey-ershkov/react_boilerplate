@@ -5,9 +5,11 @@ import {
     CreateUserInfo,
     Quote,
     Stock,
+    StockCandleQuery,
+    StockCandleResponse,
     UserInfo,
+    UserStock,
 } from 'besthack_exchange_api_typings_and_utils';
-import { UserStock } from 'besthack_exchange_api_typings_and_utils/models/UserStock';
 
 export const api = createApi({
     reducerPath: 'api',
@@ -36,12 +38,6 @@ export const api = createApi({
         getUserStocks: builder.query<AppResponse<[Stock & Quote & { count: number }]>, void>({
             query: () => '/user/stocks',
         }),
-        stockBySymbol: builder.query<
-            AppResponse<Stock & Quote & { count: number }>,
-            { symbol: string }
-        >({
-            query: ({ symbol }) => `/stock/${symbol}`,
-        }),
         addStock: builder.mutation<unknown, UserStock>({
             query: (symbol) => ({
                 url: 'user/stocks',
@@ -60,15 +56,41 @@ export const api = createApi({
         getAllStocks: builder.query<AppResponse<[Stock & Quote]>, void>({
             query: () => '/stock',
         }),
+        stockBySymbol: builder.query<
+            AppResponse<Stock & Quote & { count: number }>,
+            { symbol: string }
+        >({
+            query: ({ symbol }) => `/stock/${symbol}`,
+        }),
+        stockCandles: builder.query<AppResponse<StockCandleResponse>, StockCandleQuery>({
+            query: ({ symbols, resolution, timeFrom, timeTo }) => {
+                let params = `symbols=${symbols}`;
+
+                if (resolution) {
+                    params += `&resolution=${resolution}`;
+                }
+
+                if (timeFrom) {
+                    params += `&timeFrom=${timeFrom}`;
+                }
+
+                if (timeTo) {
+                    params += `&timeTo=${timeTo}`;
+                }
+
+                return `/stock/candles?${params}`;
+            },
+        }),
     }),
 });
 
 export const {
     useGetUserInfoQuery,
     useGetAllStocksQuery,
+    useStockBySymbolQuery,
+    useStockCandlesQuery,
     useRegisterMutation,
     useLoginMutation,
     useGetUserStocksQuery,
     useAddStockMutation,
-    useStockBySymbolQuery,
 } = api;
