@@ -1,10 +1,8 @@
 import { Callout, DefaultButton, Text, TextField } from '@fluentui/react';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 import { useAddStockMutation, useDeleteStockMutation, useUpdateBalanceMutation } from '../../api';
-import { ROUTES } from '../../App/routes';
 import { getUserId } from '../../store/user/selectors';
 import { Padding } from './styled';
 
