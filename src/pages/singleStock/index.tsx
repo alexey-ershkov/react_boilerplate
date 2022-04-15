@@ -3,7 +3,7 @@ import { formatISO, sub } from 'date-fns';
 import React, { FC, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { useStockBySymbolQuery, useStockCandlesQuery } from '../../api';
+import { useStockCandlesQuery } from '../../api';
 import { ChartComponent, ChartType } from '../../components/Chart';
 import { CommandBar } from './CommandBar';
 import { rangeConfig, RangeType } from './Range';
@@ -13,7 +13,6 @@ export const SingleStock: FC = () => {
 
     const [range, setRange] = useState<RangeType>('5d');
 
-    const { data: stockData } = useStockBySymbolQuery({ symbol });
     const { data: candlesData, isLoading } = useStockCandlesQuery({
         symbols: symbol,
         resolution: rangeConfig[range].resolution,
@@ -43,7 +42,7 @@ export const SingleStock: FC = () => {
                 onTypeChange={(newType) => setType(newType)}
                 onRangeChange={(newRange) => setRange(newRange)}
             />
-            <div style={{ width: '600px', height: '400px' }}>
+            <div style={{ width: '100%', height: '50vh' }}>
                 <ChartComponent
                     isMinimal
                     withVolume={withVolume}

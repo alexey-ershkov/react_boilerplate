@@ -3,12 +3,13 @@ import React, { useMemo } from 'react';
 
 import { useGetAllStocksQuery, useGetUserInfoQuery } from '../../api';
 import { ROUTES } from '../../App/routes';
+import { CardUI } from '../../components/CardWrapper';
 import { Header } from '../../components/Header';
 import { Layout } from '../../components/Layout';
 import { HEADER_BUTTONS, HEADERS } from '../../constants/texts';
 import { StockCard } from '../../containers/StockCard';
 import { CardStockInfo } from '../../utils/stockInfoTypes';
-import { CardsWrapper } from './styled';
+import { CardsWrapper, CardWrapper } from './styled';
 
 export const CommonPage = () => {
     const { data, isSuccess } = useGetAllStocksQuery();
@@ -47,7 +48,11 @@ export const CommonPage = () => {
                 isSuccess ? (
                     <CardsWrapper>
                         {stocks.map((stock, idx) => (
-                            <StockCard {...stock} key={idx} />
+                            <CardWrapper>
+                                <CardUI>
+                                    <StockCard {...stock} key={idx} />
+                                </CardUI>
+                            </CardWrapper>
                         ))}
                     </CardsWrapper>
                 ) : null

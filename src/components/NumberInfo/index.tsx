@@ -2,8 +2,8 @@ import { Icon } from '@fluentui/react';
 import React from 'react';
 import styled from 'styled-components';
 
-import { COLORS, FONTS } from '../../../../constants/styles';
-import { CardStockInfo } from '../../../../utils/stockInfoTypes';
+import { COLORS, FONTS } from '../../constants/styles';
+import { CardStockInfo } from '../../utils/stockInfoTypes';
 import { Cost, SmallWrapper, Wrapper } from './styled';
 
 type NumberInfoProps = Pick<CardStockInfo, 'currentPrice' | 'percentChange'>;

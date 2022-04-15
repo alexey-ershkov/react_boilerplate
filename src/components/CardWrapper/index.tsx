@@ -7,6 +7,6 @@ interface CardWrapperProps {
     styles?: Record<string, string>;
 }
 
-export const CardWrapper = ({ children, styles = {} }: CardWrapperProps) => {
+export const CardUI = ({ children, styles = {} }: CardWrapperProps) => {
     return <Wrapper styles={styles}>{children}</Wrapper>;
 };

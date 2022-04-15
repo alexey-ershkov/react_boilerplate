@@ -1,18 +1,27 @@
 import { PrimaryButton } from '@fluentui/react';
 import styled from 'styled-components';
 
-import { MOBILE_WIDTH } from '../../constants/styles';
+import { FONTS, GAP } from '../../constants/styles';
 
 export const Wrapper = styled.div<{ justify: string }>`
     display: flex;
     flex-direction: row;
+    gap: ${GAP.xl};
     justify-content: ${({ justify }) => justify};
     align-items: center;
     width: 100%;
+    padding: ${GAP.xxl} 5vw;
 `;
 
 export const HeaderButton = styled(PrimaryButton)`
-    @media (min-width: ${MOBILE_WIDTH}) {
-        min-height: 52px;
-    }
+    min-height: 5rem;
+    ${FONTS.text};
+`;
+
+export const ButtonWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    gap: ${GAP.m};
+
+    flex-wrap: wrap;
 `;

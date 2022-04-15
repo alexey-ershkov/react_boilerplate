@@ -8,6 +8,7 @@ import {
     StockCandleQuery,
     StockCandleResponse,
     UserInfo,
+    UserStock,
 } from 'besthack_exchange_api_typings_and_utils';
 
 export const api = createApi({
@@ -33,11 +34,26 @@ export const api = createApi({
                 body: info,
             }),
         }),
-        getUserStocks: builder.query<(Stock & Quote)[], void>({
+        // user stocks
+        getUserStocks: builder.query<AppResponse<[Stock & Quote & { count: number }]>, void>({
             query: () => '/user/stocks',
         }),
-        // stocks
-        getAllStocks: builder.query<{ data: (Stock & Quote)[] }, void>({
+        addStock: builder.mutation<unknown, UserStock>({
+            query: (symbol) => ({
+                url: 'user/stocks',
+                method: 'POST',
+                body: symbol,
+            }),
+        }),
+        deleteStock: builder.mutation<unknown, UserStock>({
+            query: (symbol) => ({
+                url: 'user/stocks',
+                method: 'DELETE',
+                body: symbol,
+            }),
+        }),
+        // all stocks
+        getAllStocks: builder.query<AppResponse<[Stock & Quote]>, void>({
             query: () => '/stock',
         }),
         stockBySymbol: builder.query<
@@ -76,4 +92,5 @@ export const {
     useRegisterMutation,
     useLoginMutation,
     useGetUserStocksQuery,
+    useAddStockMutation,
 } = api;

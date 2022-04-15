@@ -31,7 +31,7 @@ export const ProfilePage = () => {
         <Layout
             header={<Header pageName={HEADERS.profile} buttons={buttons} />}
             left={isSuccess ? <UserInfo {...(camelize(data.data) as UserInfoType)} /> : null}
-            right={isSuccess ? <UserStocks id={data.data.id} /> : null}
+            right={isSuccess ? <UserStocks /> : null}
         />
     );
 };
