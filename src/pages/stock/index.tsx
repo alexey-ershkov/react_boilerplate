@@ -7,8 +7,8 @@ import { ROUTES } from '../../App/routes';
 import { Header } from '../../components/Header';
 import { Layout } from '../../components/Layout';
 import { HEADER_BUTTONS, HEADERS } from '../../constants/texts';
-import { Content } from './Content';
-import { RightPanel } from './RightPanel';
+import { Content } from './containers/Content';
+import { RightPanel } from './containers/RightPanel';
 
 export const StockPage = () => {
     const { symbol } = useParams();

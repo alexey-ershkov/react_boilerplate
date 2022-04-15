@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { TABLET_WIDTH } from '../../../constants/styles';
+import { TABLET_WIDTH } from '../../../../constants/styles';
 
 export const LeftCol = styled.div`
     width: 100%;

@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@fluentui/react": "^8.64.2",
+    "@fluentui/react-hooks": "^8.5.4",
     "@fluentui/theme": "^2.6.4",
     "@lemoncode/fonk": "^1.5.2",
     "@lemoncode/fonk-final-form": "^2.3.4",
