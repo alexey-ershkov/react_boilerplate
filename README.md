@@ -1,34 +1,37 @@
-# React Boilerplate
-React boilerplate project with TS, Styled Components, Tailwind with SASS support
+# Exchange Frontend
 
-**You need npm version 7 and higher**
 
-After cloning project go to project directory and do:
+## Запуск
+
+**Для запуска поднадобится npm версии 7 и node js версии 16**
+
+Перед запуском создайте .env файл и добавьте туда следующие данные
+
+```bash
+# URL бекенда
+API_URL=http://localhost:4000
+```
 
 ```
-npm install
+npm ci
 ```
 
-# Start Development
+### Сборка для разработки
 
 ```
 npm run dev
 ```
 
-# Build Production
+### Сборка для прода
 
 ```
 npm run build
 ```
 
-# Lint
+## Технические решения
 
-```
-npm run lint
-```
+Проект написан с использование React + Typescript + Redux Toolkit. Библиотека компонентов, на которой базируется прект - Fluent UI Майкрософта https://developer.microsoft.com/en-us/fluentui
 
-# Fix Linter Issues
+Для отрисовки графиков используется https://tradingview.github.io/lightweight-charts/
 
-```
-npm run lint:fix
-```
+Добавлена поддержка нескольких видов графиков, за разный период и возможностью отобразить/скрыть объем продаж
