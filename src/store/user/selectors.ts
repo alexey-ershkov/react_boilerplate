@@ -1,5 +1,5 @@
 import { RootState } from '../index';
 
-export const checkUserState = (state: RootState) => Boolean(state.user.user.id);
-export const getUserState = (state: RootState) => state.user.user;
-export const getUserId = (state: RootState) => state.user.user.id;
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+export const getUserId = (state: RootState) => state.user.id;
