@@ -1,6 +1,6 @@
 import { DefaultButton } from '@fluentui/react';
 import { CreateUserInfo, decamelize } from 'besthack_exchange_api_typings_and_utils';
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Form } from 'react-final-form';
 import { useNavigate } from 'react-router-dom';
 
@@ -31,17 +31,23 @@ const onSubmit =
 
 const nameField = SignupFormRow('name', 'First name');
 const surnameField = SignupFormRow('surname', 'Last name');
-const emailField = SignupFormRow('email', 'E-mail');
 const passwordField = SignupFormRow('password', 'Password', 'password');
 const confirmField = SignupFormRow('confirm', 'Repeat password', 'password');
 
 export const SignupForm = () => {
-    const [register, data] = useRegisterMutation();
+    const [register, { isSuccess, isError }] = useRegisterMutation();
     const navigate = useNavigate();
 
-    if (data) {
-        navigate(ROUTES.profile);
-    }
+    const emailField = useMemo(
+        () => SignupFormRow('email', 'E-mail', undefined, isError ? 'User already exists' : null),
+        [isError],
+    );
+
+    useEffect(() => {
+        if (isSuccess) {
+            navigate(ROUTES.profile);
+        }
+    }, [isSuccess]);
 
     return (
         <Form

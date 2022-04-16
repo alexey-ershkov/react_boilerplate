@@ -48,9 +48,9 @@ export const CommonPage = () => {
                 isSuccess ? (
                     <CardsWrapper>
                         {stocks.map((stock, idx) => (
-                            <CardWrapper>
+                            <CardWrapper key={idx}>
                                 <CardUI>
-                                    <StockCard {...stock} key={idx} />
+                                    <StockCard {...stock} />
                                 </CardUI>
                             </CardWrapper>
                         ))}

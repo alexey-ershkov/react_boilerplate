@@ -1,6 +1,7 @@
 import { DefaultButton } from '@fluentui/react';
 import { decamelize } from 'besthack_exchange_api_typings_and_utils';
-import React, { useEffect } from 'react';
+import { FORM_ERROR } from 'final-form';
+import React, { useCallback, useEffect } from 'react';
 import { Field, Form } from 'react-final-form';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,27 +11,57 @@ import { FormField } from '../../../../containers/FormFields';
 import { BtnRightRow, Row } from '../../../../containers/FormFields/styled';
 import { validation } from '../../../../utils/formHelpers';
 
-const emailField = FormField('email', null, 'E-mail');
-const passwordField = FormField('password', 'password', 'Password');
+const EmailField = FormField('email', null, 'E-mail');
+const PasswordField = FormField('password', 'password', 'Password');
 
 interface SubmitData {
     email: string;
     password: string;
 }
 
-const onSubmit = (registerFunc) => (values: SubmitData) => {
-    registerFunc(decamelize(values));
-};
-
 export const LoginForm = () => {
-    const [login, { isSuccess }] = useLoginMutation();
+    const [login, { isSuccess, isError, error }] = useLoginMutation();
     const navigate = useNavigate();
+
+    const onSubmit = (registerFunc) => (values: SubmitData) => {
+        registerFunc(decamelize(values));
+    };
 
     useEffect(() => {
         if (isSuccess) {
             navigate(ROUTES.profile);
         }
     }, [isSuccess]);
+
+    const emailField = useCallback(
+        (props) => (
+            <EmailField
+                externalError={
+                    isError &&
+                    'status' in error &&
+                    error.status === 404 &&
+                    'User with this email not found'
+                }
+                {...props}
+            />
+        ),
+        [isError],
+    );
+
+    const passwordField = useCallback(
+        (props) => (
+            <PasswordField
+                externalError={
+                    isError &&
+                    ('status' in error
+                        ? error.status === 401 && 'Invalid password'
+                        : 'Invalid email or password')
+                }
+                {...props}
+            />
+        ),
+        [isError],
+    );
 
     return (
         <Form
