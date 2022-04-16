@@ -1,6 +1,5 @@
 import { DefaultButton } from '@fluentui/react';
 import { decamelize } from 'besthack_exchange_api_typings_and_utils';
-import { FORM_ERROR } from 'final-form';
 import React, { useCallback, useEffect } from 'react';
 import { Field, Form } from 'react-final-form';
 import { useNavigate } from 'react-router-dom';

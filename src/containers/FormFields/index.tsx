@@ -1,5 +1,5 @@
 import { Label, TextField } from '@fluentui/react';
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Field } from 'react-final-form';
 
 import { validation } from '../../utils/formHelpers';
